@@ -1,0 +1,24 @@
+@startuml
+
+interface Transport
+
+class Truck
+class Ship
+
+abstract class TransportFactory {
+    +createTransport(): Transport
+}
+
+class TruckFactory
+class ShipFactory
+
+Transport <|.. Truck
+Transport <|.. Ship
+
+TransportFactory <|-- TruckFactory
+TransportFactory <|-- ShipFactory
+
+TruckFactory ..> Truck : creates
+ShipFactory ..> Ship : creates
+
+@enduml

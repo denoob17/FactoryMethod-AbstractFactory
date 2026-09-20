@@ -1,0 +1,35 @@
+@startuml
+
+interface Button
+interface Checkbox
+
+class WindowsButton
+class WindowsCheckbox
+
+class MacButton
+class MacCheckbox
+
+interface GUIFactory {
+    +createButton(): Button
+    +createCheckbox(): Checkbox
+}
+
+class WindowsFactory
+class MacFactory
+
+Button <|.. WindowsButton
+Button <|.. MacButton
+
+Checkbox <|.. WindowsCheckbox
+Checkbox <|.. MacCheckbox
+
+GUIFactory <|.. WindowsFactory
+GUIFactory <|.. MacFactory
+
+WindowsFactory ..> WindowsButton : creates
+WindowsFactory ..> WindowsCheckbox : creates
+
+MacFactory ..> MacButton : creates
+MacFactory ..> MacCheckbox : creates
+
+@enduml
